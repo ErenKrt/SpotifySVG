@@ -1,0 +1,605 @@
+<svg width="{{Resolution.width}}" height="{{Resolution.height}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <foreignObject width="{{Resolution.width}}" height="{{Resolution.height}}">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="container" style="height: {{Resolution.height}}px; width:{{Resolution.width}}px;">
+          <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'/>
+          <style>
+            * {
+              box-sizing: border-box;
+            }
+            a {
+              text-decoration:none;
+              color: white;
+            }
+            html,body,.player{
+              width: 100%;
+              height: 100%;
+            }
+            
+            .shadow_right {
+              width: 90px;
+              height: 380px;
+              -webkit-transition: all 300ms 200ms;
+              transition: all 300ms 200ms;
+              top: 0px;
+              position: absolute;
+              pointer-events: none;
+              box-shadow: 0px 0px 0px #303f45 inset;
+            }
+            
+            i {
+              -webkit-transition: all .3s;
+              transition: all .3s;
+              cursor: pointer;
+            }
+            
+            i:hover {
+              color: #44f5b7;
+            }
+            
+            .shadow_left {
+              width: 90px;
+              height: 380px;
+              -webkit-transition: all 300ms 200ms;
+              transition: all 300ms 200ms;
+              top: 0px;
+              position: absolute;
+              right: 0;
+              pointer-events: none;
+              box-shadow: 0px 0px 0px #303f45 inset;
+            }
+            
+            * {
+              font-family: 'Open Sans', sans-serif;
+            }
+            
+            
+            .player_inner__middle .cube_inner>div {
+              display: flex;
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              -webkit-transform-style: preserve-3D;
+              transform-style: preserve-3D;
+            }
+            
+            .player_inner {
+              display: flex;
+              flex-direction: column;
+              background: #3a4e47;
+              width: 100%;
+              height: 100%;
+              border-radius: 6px;
+              -webkit-perspective: 800px;
+              perspective: 800px;
+            }
+            
+            .player_inner__middle {
+              display: flex;
+              flex: 2;
+              position: relative;
+              height: 100%;
+              background: #40555f;
+              box-shadow: 0px 0px 110px #181f23 inset;
+            }
+            
+            .player_inner__middle .cube {
+              display: flex;
+              flex: 1;
+              width: 100%;
+              height: 100%;
+              position: relative;
+              -webkit-transform-style: preserve-3D;
+              transform-style: preserve-3D;
+              -webkit-perspective-origin: 190px 190px;
+              perspective-origin: 190px 190px;
+              -webkit-transition: all 300ms 200ms cubic-bezier(0.1, 1.94, 0.32, 1.02), -webkit-transform-origin 0ms;
+              transition: all 300ms 200ms cubic-bezier(0.1, 1.94, 0.32, 1.02), -webkit-transform-origin 0ms;
+              transition: all 300ms 200ms cubic-bezier(0.1, 1.94, 0.32, 1.02), transform-origin 0ms;
+              transition: all 300ms 200ms cubic-bezier(0.1, 1.94, 0.32, 1.02), transform-origin 0ms, -webkit-transform-origin 0ms;
+            }
+            
+            .player_inner__middle .cube_inner {
+              display: flex;
+              flex: 1;
+            
+              height: 100%;
+              width: 100%;
+              -webkit-transform-style: preserve-3D;
+              transform-style: preserve-3D;
+            }
+            
+            
+            
+            .player_inner__middle .cube_inner__front {
+              background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/koan.png");
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover!important;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars {
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              -webkit-transform: rotatez(180deg);
+              transform: rotatez(180deg);
+              width: 100%;
+              z-index: 1;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar {
+              width: 10px;
+              background: white;
+              opacity: 0.1;
+              float: left;
+              width: 10%;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(1) {
+              -webkit-animation: eq 1s 40ms infinite ease-in-out;
+              animation: eq 1s 40ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(2) {
+              -webkit-animation: eq 1s 34ms infinite ease-in-out;
+              animation: eq 1s 34ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(3) {
+              -webkit-animation: eq 1s 24ms infinite ease-in-out;
+              animation: eq 1s 24ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(4) {
+              -webkit-animation: eq 1s 84ms infinite ease-in-out;
+              animation: eq 1s 84ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(5) {
+              -webkit-animation: eq 1s 25ms infinite ease-in-out;
+              animation: eq 1s 25ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(6) {
+              -webkit-animation: eq 1s 108ms infinite ease-in-out;
+              animation: eq 1s 108ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(7) {
+              -webkit-animation: eq 1s 133ms infinite ease-in-out;
+              animation: eq 1s 133ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(8) {
+              -webkit-animation: eq 1s 296ms infinite ease-in-out;
+              animation: eq 1s 296ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(9) {
+              -webkit-animation: eq 1s 99ms infinite ease-in-out;
+              animation: eq 1s 99ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .bars_bar:nth-of-type(10) {
+              -webkit-animation: eq 1s 330ms infinite ease-in-out;
+              animation: eq 1s 330ms infinite ease-in-out;
+            }
+            
+            .player_inner__middle .cube_inner__front .details {
+              position: absolute;
+              z-index: 10;
+              width: 100%;
+              top: 50%;
+              -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+              color: white;
+              text-align: center;
+            }
+            
+            .player_inner__middle .cube_inner__front .details_album {
+              width: 90px;
+              height: 90px;
+              background-size: cover!important;
+              background: white;
+              border-radius: 4px;
+              margin: 0 auto;
+              background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/koanalbum.png");
+              margin-bottom: 20px;
+            }
+            
+            .player_inner__middle .cube_inner__front .details h2 {
+              font-size: 18px;
+              font-weight: 600;
+              margin: 0;
+            }
+            
+            .player_inner__middle .cube_inner__front .details h3 {
+              font-size: 14px;
+              margin: 0;
+              opacity: 0.6;
+              font-weight: 400;
+            }
+            
+            .player_inner__bottom {
+              display: flex;
+              flex: 0;
+              height: 190px;
+              padding: 20px;
+              flex-direction: column;
+            }
+            
+            .player_inner__bottom .controls {
+              clear: left;
+              margin-top: 2px;
+            }
+            
+            .player_inner__bottom .controls_middle {
+              font-size: 50px;
+              color: white;
+              text-align: center;
+            }
+            
+            .player_inner__bottom .playbar {
+              width: 100%;
+              background: #2c3e38;
+              height: 4px;
+              position: relative;
+              border-radius: 10px;
+            }
+            
+            .player_inner__bottom .playbar_inner {
+              position: absolute;
+              width: 40%;
+              height: 100%;
+              border-radius: 10px;
+              background: #44f5b7;
+            }
+            
+            .player_inner__bottom .playbar_left {
+              float: left;
+              position: relative;
+              top: 8px;
+            }
+            
+            .player_inner__bottom .playbar_right {
+              position: relative;
+              top: 8px;
+              float: right;
+            }
+            
+            .player_inner__bottom .playbar span {
+              color: white;
+              font-size: 10px;
+            }
+            
+            
+            /*! CSS Used keyframes */
+            
+            @-webkit-keyframes eq {
+              0% {
+                height: 30px;
+              }
+              50% {
+                height: 100px;
+              }
+              100% {
+                height: 30px;
+              }
+            }
+            
+            @keyframes eq {
+              0% {
+                height: 30px;
+              }
+              50% {
+                height: 100px;
+              }
+              100% {
+                height: 30px;
+              }
+            }
+            
+            
+            /*! CSS Used fontfaces */
+            
+          
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 300;
+              src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OX-hpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 300;
+              src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OVuhpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 300;
+              src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OXuhpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+1F00-1FFF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 300;
+              src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OUehpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0370-03FF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 300;
+              src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OXehpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 300;
+              src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OXOhpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 300;
+              src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r8OUuhpKKSTjw.woff2) format('woff2');
+              unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ0bf8pkAp6a.woff2) format('woff2');
+              unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFUZ0bf8pkAp6a.woff2) format('woff2');
+              unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWZ0bf8pkAp6a.woff2) format('woff2');
+              unicode-range: U+1F00-1FFF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVp0bf8pkAp6a.woff2) format('woff2');
+              unicode-range: U+0370-03FF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWp0bf8pkAp6a.woff2) format('woff2');
+              unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFW50bf8pkAp6a.woff2) format('woff2');
+              unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2) format('woff2');
+              unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 600;
+              src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOX-hpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 600;
+              src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOVuhpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 600;
+              src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOXuhpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+1F00-1FFF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 600;
+              src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOUehpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0370-03FF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 600;
+              src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOXehpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 600;
+              src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOXOhpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 600;
+              src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOUuhpKKSTjw.woff2) format('woff2');
+              unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOX-hpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOVuhpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXuhpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+1F00-1FFF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUehpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0370-03FF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXehpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOXOhpKKSTj5PW.woff2) format('woff2');
+              unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+            
+            @font-face {
+              font-family: 'Open Sans';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2) format('woff2');
+              unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+          </style>
+          
+         
+          {{^HaveSong}}
+          <div class='player'>
+            <div class="player_inner">
+              <div class="player_inner__middle">
+                <div class="cube">
+                  <div class="cube_inner">
+                    <div class="cube_inner__front">
+                      <div class="details">
+                        <a target="_blank"><div class="details_album"></div></a>
+                        <a target="_blank"><h2>No song playing currently</h2></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          {{/HaveSong}}
+          
+          {{#HaveSong}}
+          <div class='player'>
+            <div class='player_inner' >
+              <div class='player_inner__middle' >
+                <div class='cube'>
+                  <div class='cube_inner'>
+                    <div class='cube_inner__front' style="background: url('{{Song.Album.Image}}');">
+                      <div class='bars'>
+                        <div class='bars_bar'></div>
+                        <div class='bars_bar'></div>
+                        <div class='bars_bar'></div>
+                        <div class='bars_bar'></div>
+                        <div class='bars_bar'></div>
+                        <div class='bars_bar'></div>
+                        <div class='bars_bar'></div>
+                        <div class='bars_bar'></div>
+                        <div class='bars_bar'></div>
+                        <div class='bars_bar'></div>
+                      </div>
+                      <div class='details'>
+                        <a href="{{Song.Album.Url}}" target="_blank"><div style="background: url('{{Song.Album.Image}}');" class='details_album'></div></a>
+                        <a href="{{Song.Song.Url}}" target="_blank"><h2>{{Song.Song.Name}}</h2></a>
+                        <h3 id="sanatci">{{#Song.Artists}} <a target="_blank" href="{{Url}}">{{Name}}</a>, {{/Song.Artists}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='player_inner__bottom'>
+                
+                <div class='playbar'>
+                  <div class='playbar_inner' style="width: {{Song.Progress}}%;"></div>
+                  <div class='playbar_left'>
+                    <span>{{Song.CurrentTime}}</span>
+                  </div>
+                  <div class='playbar_right'>
+                    <span>{{Song.MaxTime}}</span>
+                  </div>
+                </div>
+                <div class='controls'>
+                  <div class='controls_middle'>
+                    <a href="{{Song.Song.Url}}" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAAwCAYAAABe6Vn9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFFmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0MzUyLCAyMDIwLzAxLzMwLTE1OjUwOjM4ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTA5LTE2VDIzOjA3OjM0KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMC0wOS0xNlQyMzowODo1MiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMC0wOS0xNlQyMzowODo1MiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpjMWNjZWZlNC0xOTU4LTcz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"/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/HaveSong}}
+        </div>
+    </foreignObject>
+</svg>
